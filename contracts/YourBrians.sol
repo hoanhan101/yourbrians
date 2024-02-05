@@ -125,7 +125,7 @@ contract YourBrians is ERC721A, Ownable {
     // Leverage Blitmap's encoding technique (0x8d04a8c79ceb0889bdd12acdf3fa9d207ed3ff63)
     function _buildArt(Brian memory brian) private view returns (bytes memory) {
         string
-            memory svgString = '<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" version="1.1">';
+            memory svgString = '<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" version="1.1">';
 
         string[32] memory lookup = [
             "0",
