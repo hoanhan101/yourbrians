@@ -1,0 +1,26 @@
+{
+  "name": "yourbrians",
+  "version": "1.0.0",
+  "description": "yourbrians",
+  "main": "index.js",
+  "scripts": {
+    "node": "npx hardhat node",
+    "test": "npx hardhat test",
+    "clean": "npx hardhat clean",
+    "deploy-hardhat": "npx hardhat run scripts/deploy.js --network localhost"
+  },
+  "author": "Hoanh An",
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^3.0.0",
+    "hardhat": "^2.17.4",
+    "dom-parser": "^0.1.6",
+    "dotenv": "^16.3.1"
+  },
+  "dependencies": {
+    "@0xsequence/sstore2": "github:0xsequence/sstore2",
+    "@openzeppelin/contracts": "^4.9.1",
+    "erc721a": "^4.2.3",
+    "solady": "^0.0.123"
+  }
+}
