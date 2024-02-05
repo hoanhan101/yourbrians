@@ -52,6 +52,11 @@ contract YourBrians is ERC721A, Ownable {
     }
 
     function airdrop(string[2] memory _colors, address _to) external onlyOwner {
+        uint256 minted = _totalMinted();
+        unchecked {
+            if ((minted + 1) > supply) revert MintOut();
+        }
+
         Brian memory brian;
         brian.body = _colors[0];
         brian.background = _colors[1];
