@@ -7,7 +7,9 @@
     "node": "npx hardhat node",
     "test": "npx hardhat test",
     "clean": "npx hardhat clean",
-    "deploy-hardhat": "npx hardhat run scripts/deploy.js --network localhost"
+    "deploy-hardhat": "npx hardhat run scripts/deploy.js --network localhost",
+    "deploy-sepolia": "npx hardhat run scripts/deploy.js --network base-sepolia",
+    "deploy-mainnet": "npx hardhat run scripts/deploy.js --network base-mainnet"
   },
   "author": "Hoanh An",
   "license": "MIT",
