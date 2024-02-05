@@ -62,7 +62,7 @@ async function main() {
     hre.network.name == "base-mainnet"
   ) {
     console.log("VERIFYING ON BASESCAN");
-    await delay(30000);
+    await utils.delay(30000);
 
     await hre.run("verify:verify", {
       address: contract.address,
