@@ -23,7 +23,8 @@ async function main() {
     await ethers.getContractFactory(contractName)
   ).deploy(contractName, contractSymbol, contractSupply);
   await contract.waitForDeployment();
-  console.log("DEPLOYED CONTRACT", await contract.getAddress());
+  const contractAddress = await contract.getAddress();
+  console.log("DEPLOYED CONTRACT", contractAddress);
 
   const img = utils.blitmapEncode(path.join(__dirname, "../assets/brian.svg"));
   console.log(img);
@@ -65,7 +66,7 @@ async function main() {
     await utils.delay(30000);
 
     await hre.run("verify:verify", {
-      address: contract.address,
+      address: contractAddress,
       constructorArguments: [contractName, contractSymbol, contractSupply],
     });
     console.log("VERIFED ON BASESCAN");

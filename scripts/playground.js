@@ -2,7 +2,7 @@ const fs = require("fs");
 
 async function main() {
   const factory = await ethers.getContractFactory("YourBrians");
-  const contract = factory.attach("0xfab01331fA193e8e2E690488E79B38bcd5A584A9");
+  const contract = factory.attach("0x45ac82bC0f12553e5144e1dBf7dba3A02865Bbec");
   console.log(await contract.name());
   console.log(await contract.totalSupply());
 
