@@ -39,8 +39,17 @@ async function main() {
 
     const testSupply = 3;
     for (let i = 0; i < testSupply; i++) {
-      const [owner, addr1] = await ethers.getSigners();
-      await contract.airdrop(utils.randomColors(), addr1.address);
+      const [owner, addr1, addr2] = await ethers.getSigners();
+      if (i === 0) {
+        await contract.airdrop(utils.randomColors(), addr1.address);
+        await contract.setSender(addr1.address);
+      } else {
+        await contract.connect(addr1).send(utils.randomColors(), owner.address);
+
+        await expect(
+          contract.connect(addr2).send(utils.randomColors(), owner.address)
+        ).to.be.revertedWithCustomError(contract, "InvalidSender");
+      }
 
       const tokenURI = await contract.tokenURI(i);
       const payload = JSON.parse(tokenURI.split("data:application/json,")[1]);

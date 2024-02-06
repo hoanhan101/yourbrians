@@ -31,10 +31,12 @@ contract YourBrians is ERC721A, Ownable {
     uint256 public immutable supply;
 
     address private _encodedArt;
+    address private _senderAddress;
     Brian[] private brians;
 
     error MintClose();
     error MintOut();
+    error InvalidSender();
     error InvalidLength();
     error InvalidToken();
 
@@ -51,7 +53,22 @@ contract YourBrians is ERC721A, Ownable {
         _encodedArt = SSTORE2.write(_art);
     }
 
+    function setSender(address _to) external onlyOwner {
+        _senderAddress = _to;
+    }
+
     function airdrop(string[2] memory _colors, address _to) external onlyOwner {
+        _mintIt(_colors, _to);
+    }
+
+    function send(string[2] memory _colors, address _to) external {
+        if (msg.sender != _senderAddress) {
+            revert InvalidSender();
+        }
+        _mintIt(_colors, _to);
+    }
+
+    function _mintIt(string[2] memory _colors, address _to) internal {
         uint256 minted = _totalMinted();
         unchecked {
             if ((minted + 1) > supply) revert MintOut();
