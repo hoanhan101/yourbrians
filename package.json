@@ -7,6 +7,9 @@
     "node": "npx hardhat node",
     "test": "npx hardhat test",
     "clean": "npx hardhat clean",
+    "play-hardhat": "npx hardhat run scripts/playground.js --network localhost",
+    "play-sepolia": "npx hardhat run scripts/playground.js --network base-sepolia",
+    "play-mainnet": "npx hardhat run scripts/playground.js --network base-mainnet",
     "deploy-hardhat": "npx hardhat run scripts/deploy.js --network localhost",
     "deploy-sepolia": "npx hardhat run scripts/deploy.js --network base-sepolia",
     "deploy-mainnet": "npx hardhat run scripts/deploy.js --network base-mainnet"
